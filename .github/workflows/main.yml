@@ -25,13 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Step 0 - Checkout main branch from GitHub
       - uses: actions/checkout@v2
-
+      
       # Step 1 - Increase the Patch part of the jar version 
       - name: Step 1 - Increase the Patch part of the jar version 
-        uses: actions/setup-java@v1
-        with: 
-          java-version@v1
-          
+        run: echo Hello, world!
+            
       # Step 2 - Compile the code
       - name: Step 2 - Compile the code
         run: mvn compile
