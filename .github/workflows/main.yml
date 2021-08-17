@@ -42,7 +42,7 @@ jobs:
           ls -a
           cd staging
           ls -a
-          cd..
+          cd ..
           cd target
           ls -a
 
