@@ -40,10 +40,10 @@ jobs:
           ls -a
           mkdir staging && cp target/*.jar staging
           ls -a
-          cd staging
+          cd target
           ls -a
           cd ..
-          cd target
+          cd staging
           ls -a
 
       - name: Create the github-actions-artifact
@@ -51,3 +51,6 @@ jobs:
         with:
           name: github-actions-artifact
           path: staging
+          
+      - name: LS
+        run: ls -a
