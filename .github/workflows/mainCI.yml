@@ -35,11 +35,11 @@ jobs:
       - name: Compile with MVN
         run: |
           cd my-app
-          ls -a
           mvn -B package --file pom.xml
+          mkdir buildArtifact && cp target/*.jar buildArtifact
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Create the github-actions-artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: github-actions-artifact
+          path: buildArtifact
