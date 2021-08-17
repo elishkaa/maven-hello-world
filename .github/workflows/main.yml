@@ -35,8 +35,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Compile with MVN
         run: |
-          cd my-app
-          mvn -B package --file pom.xml
+          mvn -B package --file my-app\pom.xml
           ls -a
           mkdir stage && cp target/*.jar stage
           cd target
