@@ -38,19 +38,19 @@ jobs:
           cd my-app
           mvn -B package --file pom.xml
           ls -a
-          mkdir staging && cp target/*.jar staging
+          mkdir artifacts && cp target/*.jar artifacts
           ls -a
           cd target
           ls -a
           cd ..
-          cd staging
+          cd artifacts
           ls -a
 
       - name: Create the github-actions-artifact
         uses: actions/upload-artifact@v2
         with:
           name: github-actions-artifact
-          path: my-app/staging
+          path: my-app/artifacts
           
       - name: LS
         run: ls -a
