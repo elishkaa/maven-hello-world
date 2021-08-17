@@ -7,6 +7,9 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
+    
+  pull_request:
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -32,8 +35,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Compile with MVN
         run: |
+          cd my-app
           mvn -B package --file pom.xml
-          mkdir buildArtifact && cp target/*.jar buildArtifact
+          mkdir buildArtifact && cp my-app/target/*.jar buildArtifact
 
       - name: Create the github-actions-artifact
         uses: actions/upload-artifact@v2
