@@ -37,7 +37,8 @@ jobs:
         run: |
           cd my-app
           mvn -B package --file pom.xml
-          mkdir buildArtifact && cp my-app/target/*.jar buildArtifact
+          ls -a
+          mkdir buildArtifact && cp target/*.jar buildArtifact
 
       - name: Create the github-actions-artifact
         uses: actions/upload-artifact@v2
