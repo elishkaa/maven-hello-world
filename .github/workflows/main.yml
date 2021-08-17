@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: github-actions-artifact
-          path: staging
+          path: my-app/staging
           
       - name: LS
         run: ls -a
