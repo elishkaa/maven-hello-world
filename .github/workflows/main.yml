@@ -39,6 +39,7 @@ jobs:
           mvn -B package --file pom.xml
           ls -a
           mkdir staging && cp target/*.jar staging
+          ls -a
           cd target
           ls -a
 
