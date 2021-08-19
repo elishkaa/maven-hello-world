@@ -85,4 +85,7 @@ jobs:
           docker pull elishkaa/maven-hello-world:latest
           ls -a
           docker run elishkaa/maven-hello-world:latest
+      
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
         
