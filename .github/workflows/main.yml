@@ -81,5 +81,8 @@ jobs:
          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest
          
       - name: Download and Run the Docker image
-        run: docker pull elishkaa/maven-hello-world:latest
+        run: |
+          docker pull elishkaa/maven-hello-world:latest
+          ls -a
+          docker run elishkaa/maven-hello-world:latest
         
