@@ -45,7 +45,14 @@ jobs:
           cd ..
           cd artifacts
           ls -a
-
+      
+      - name: Set up a cache for Maven
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      
       - name: Create the github-actions-artifact
         uses: actions/upload-artifact@v2
         with:
