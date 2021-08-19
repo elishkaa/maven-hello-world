@@ -45,7 +45,14 @@ jobs:
           cd ..
           cd artifacts
           ls -a
-
+      
+      - name: Set up a cache for Maven
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/my-app/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      
       - name: Create the github-actions-artifact
         uses: actions/upload-artifact@v2
         with:
@@ -57,3 +64,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+      
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+         context: ./
+         file: ./Dockerfile
+         push: true
+         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/maven-hello-world:latest
