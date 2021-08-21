@@ -10,7 +10,7 @@
   <properties>
     <!-- This property will be set by the Maven Dependency plugin -->
     <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
-    <jar.finalName>${buildNumber}</jar.finalName>
+    <!-- <jar.finalName>${buildNumber}</jar.finalName> -->
   </properties>
 
   <dependencies>
