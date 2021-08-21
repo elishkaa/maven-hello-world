@@ -10,6 +10,7 @@
   <properties>
     <!-- This property will be set by the Maven Dependency plugin -->
     <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
+    <jar.finalName>${buildNumber}</jar.finalName>
   </properties>
 
   <dependencies>
@@ -35,12 +36,12 @@
       <version>1.9.4</version>
     </dependency>
   </dependencies>
-  <scm>
+  <!-- <scm>
     <connection>scm:git:git@github.com:elishkaa/maven-hello-world.git</connection>
     <developerConnection>scm:git:git@github.com:elishkaa/maven-hello-world.git</developerConnection>
     <url>https://github.com/elishkaa/maven-hello-world</url>
-    <tag>@{project.version}</tag>
-  </scm>
+    <tag>@{buildNumber}</tag>
+  </scm> -->
   <build>
     <plugins>
       <plugin>
@@ -110,18 +111,10 @@
           </compilerArgs>
         </configuration>
       </plugin>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>buildnumber-maven-plugin</artifactId>
         <version>1.4</version>
-        <configuration>
-          <format>{0,number}.{1,number}.{2,number}</format>
-          <items>
-            <item>buildNumber0</item>
-            <item>buildNumber1</item>
-            <item>buildNumber2</item>
-          </items>
-        </configuration>
         <executions>
           <execution>
             <phase>validate</phase>
@@ -130,8 +123,18 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+        <configuration>
+          <doCheck>true</doCheck>
+          <doUpdate>true</doUpdate>
+          <format>{0,number}.{1,number}.{2,number}</format>
+          <items>
+            <item>buildNumber0</item>
+            <item>buildNumber1</item>
+            <item>buildNumber2</item>
+          </items>
+        </configuration>
+      </plugin> -->
     </plugins>
-    <finalName>$\{project.artifactId}-$\{project.version}-r$\{buildNumber}</finalName>
+    <!-- <finalName>$\{project.artifactId}-$\{project.version}-r$\{buildNumber}</finalName> -->
   </build>
 </project>
